@@ -46,13 +46,20 @@ export const unflattenItems = (doc, demo) => {
   return Object.values(items);
 };
   
-export const editItems = (id = undefined, update = false, reset = false) => {
+export const editItems = (id = undefined, updateItems = false, deleteBids = false) => {
   fetch(import.meta.env.BASE_URL + "items.yml")
     .then((response) => response.text())
     .then((text) => yaml.load(text))
     .then((items) => {
       // If ID was provided, place that item in an array by itself
       if (id !== undefined) items = [items.find((item) => item.id === id)];
+
+      // Make the user confirm they want to edit items
+      let action = updateItems? 'update item data' : (deleteBids ? 'delete all bids' : '');
+      let item = id === undefined ? 'all items' : `item ${id}`;
+      if (confirm(`You are about to ${action} for ${item}, are you sure?`) == false) {
+        return
+      }
 
       const docRef = doc(db, "auction", "items");
       getDoc(docRef)
@@ -69,9 +76,9 @@ export const editItems = (id = undefined, update = false, reset = false) => {
             fields
               .filter((field) => parseField(field).item === newItem.id)
               .forEach((field) => {
-                if (update && parseField(field).bid === 0)
+                if (updateItems && parseField(field).bid === 0)
                   updates[field] = newItem;
-                if (reset && parseField(field).bid)
+                if (deleteBids && parseField(field).bid)
                   updates[field] = deleteField();
               });
           });

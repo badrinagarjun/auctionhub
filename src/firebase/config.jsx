@@ -1,16 +1,16 @@
+// Import the necessary functions from Firebase SDK
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-// Web app's Firebase configuration
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCAYOYDuMKGGjTSJL5uDzG5hjQ6y_vYPiI",
-  authDomain: "auction-website-b12fc.firebaseapp.com",
-  databaseURL: "https://auction-website-b12fc.firebaseio.com",
-  projectId: "auction-website-b12fc",
-  storageBucket: "auction-website-b12fc.appspot.com",
-  messagingSenderId: "791747024664",
-  appId: "1:791747024664:web:215a222a81c6d0c2aeb06d",
+  apiKey: "AIzaSyCMrjHHUDfSQi-xmKbfb72HnG2p2DOocO0",
+  authDomain: "auctionhub-53ad5.firebaseapp.com",
+  projectId: "auctionhub-53ad5",
+  storageBucket: "auctionhub-53ad5.appspot.com",
+  messagingSenderId: "1067624539528",
+  appId: "1:1067624539528:web:80992c39df13b736cb863d"
 };
 
 // Initialize Firebase

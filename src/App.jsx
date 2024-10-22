@@ -17,7 +17,7 @@ import AdminPage from "./pages/Admin";
 import Footer from "./components/Footer";
 
 function App() {
-  const demo = true;
+  const demo = false;
 
   const { admin } = AutoSignIn();
 
